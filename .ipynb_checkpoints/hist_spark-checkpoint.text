@@ -1,0 +1,52 @@
+raw_assessment = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","assessment").option("startingOffsets", "earliest").option("endingOffsets", "latest").load() 
+raw_assessment.cache()
+raw_assessment.printschema
+raw_assessment.printSchema()
+players = raw_assessment.select(raw_assessment.value.cast('string'))
+assesment1 = raw_assessment.select(raw_assessment.value.cast('string'))
+assesment1.write.parquet("/tmp/assessment1")
+assesment1.show()
+import sys
+sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf8', buffering=1)
+import json
+assessment.rdd.map(lambda x: json.loads(x.value)).toDF().show()
+assesment1.rdd.map(lambda x: json.loads(x.value)).toDF().show()
+from pyspark.sql import Row
+extracted_assessment = assesment1.rdd.map(lambda x: Row(**json.loads(x.value))).toDF()
+extracted_assessment.show()
+extracted_assessment.registerTempTable('assessment')
+spark.sql("select sequences from assessment limit 10").show()
+spark.sql("select sequences.questions from assessment limit 10").show()
+extracted_assessment.printSchema()
+spark.sql("select sequences.questions.elements from assessment limit 10").show()
+spark.sql("select sequences.questions.key from assessment limit 10").show()
+spark.sql("select sequences.questions from assessment limit 10").printSchema()
+spark.sql("select sequences.questions.element from assessment limit 10").printSchema()
+docker-compose exec mids bash -c "cat /project-2-fengyaoluo/assessment-nested.json | jq '.[]' -c
+docker-compose exec mids bash -c "cat /project-2-fengyaoluo/assessment-nested.json | jq '.[]' -c |"
+docker-compose exec mids bash -c "cat /project-2-fengyaoluo/assessment-nested.json | jq '.[]' -c "
+docker-compose exec mids bash -c "cat /project-2-fengyaoluo/assessment-nested.json | jq '.[]' -c"
+spark.sql("select count(*) from assessment limit 10").printSchema()
+spark.sql("select count(*) from assessment ").printSchema()
+spark.sql("select count(*) from assessment ").show()
+spark.sql("select exam_name, count(*)  from assessment where exam_name = 'Learning Git'").show()
+spark.sql("select exam_name, count(*)  from assessment where exam_name = 'Learning Git' group by exam_name").show()
+spark.sql("select exam_name, count(*)  from assessment group by exam_name order by exam_name").show()
+spark.sql("select exam_name, count(*)  from assessment group by exam_name order by count(*) ").show()
+spark.sql("select exam_name, count(*)  from assessment group by exam_name order by count(*) desc ").show()
+spark.sql("select exam_name, count(*)  from assessment group by exam_name order by count(*) desc ").show(false)
+spark.sql("select exam_name, count(*)  from assessment group by exam_name order by count(*) desc ").show(truncate = false)
+spark.sql("select exam_name, count(*)  from assessment group by exam_name order by count(*) desc ").show(truncate = False)
+spark.sql("select sequence  from assessment ").show(truncate = False)
+spark.sql("select sequence from assessment limit 1 ").show(truncate = False)
+spark.sql("select sequences from assessment limit 1 ").show(truncate = False)
+spark.sql("select sequences from assessment limit 10 ").show(truncate = False)
+spark.sql("select sequences.questions.user_incomplete from assessment limit 10 ").show(truncate = False)
+spark.sql("select sequences.questions from assessment limit 10 ").show(truncate = False)
+spark.sql("select sequences.questions[1] from assessment limit 10 ").show(truncate = False)
+spark.sql("select sequences.questions[1].user_incomplete from assessment limit 10 ").show(truncate = False)
+history > fengyaoluo-history.txt
+spark.sql("select count(*) from assessment ").show()
+docker-compose exec spark cat /root/.python_history
+spark.sql("select exam_name, count(*)  from assessment where exam_name = 'Learning Git'").show()
+spark.sql("select exam_name, count(*)  from assessment where exam_name = 'Learning Git' group by exam_name").show()
