@@ -33,6 +33,6 @@ curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/ME6hjp
 3. How many people took *Learning Git*?
 4. What is the least common course taken? And the most common?
 
-Answers are in the jupyter notebook. 
+Answers are in the jupyter notebook 'project-2-FL'. 
 
 
